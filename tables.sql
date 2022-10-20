@@ -10,9 +10,9 @@ CREATE TABLE "cakes" (
 
 CREATE TABLE "clients" (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(50) NOT NULL,
+	name VARCHAR NOT NULL,
     address VARCHAR NOT NULL,
-    phone VARCHAR(20) NOT NULL
+    phone VARCHAR(11) NOT NULL
 );
 
 CREATE TABLE "orders" (
