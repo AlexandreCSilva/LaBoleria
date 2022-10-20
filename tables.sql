@@ -20,6 +20,6 @@ CREATE TABLE "orders" (
 	"clientId" INTEGER REFERENCES "clients"("id"),
     "cakeId" INTEGER REFERENCES "cakes"("id"),
     quantity INTEGER NOT NULL DEFAULT 1,
-    "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP DEFAULT NOW(),
     "totalPrice" NUMERIC NOT NULL DEFAULT 0
 );
