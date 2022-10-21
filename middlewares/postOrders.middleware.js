@@ -22,7 +22,7 @@ const orderSchema = Joi.object({
 })   
 
 
-async function verifyOrder (req, res, next) {
+async function verifyPostOrder (req, res, next) {
     const validation = orderSchema.validate(req.body, { abortEarly: false });
 
     if (validation.error) { 
@@ -51,4 +51,4 @@ async function verifyOrder (req, res, next) {
     next();
 }
 
-export { verifyOrder }
+export { verifyPostOrder }

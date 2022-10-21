@@ -1,9 +1,9 @@
 import express from 'express';
 import { postOrder } from '../controllers/postOrders.controller.js';
-import { verifyOrder } from '../middlewares/postOrders.middleware.js';
+import { verifyPostOrder } from '../middlewares/postOrders.middleware.js';
 
-const orderRouter = express.Router();
+const postOrderRouter = express.Router();
 
-orderRouter.post('/order', verifyOrder, postOrder);
+postOrderRouter.post('/order', verifyPostOrder, postOrder);
 
-export { orderRouter };
+export { postOrderRouter };
