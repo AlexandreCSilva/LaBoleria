@@ -3,6 +3,6 @@ import { getOrder } from '../controllers/getOrders.controller.js';
 
 const getOrderRouter = express.Router();
 
-getOrderRouter.get('/order', getOrder);
+getOrderRouter.get('/orders', getOrder);
 
 export { getOrderRouter };
