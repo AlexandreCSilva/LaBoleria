@@ -1,6 +1,6 @@
 import express from 'express';
-import { postOrder } from '../controllers/orders.controller.js';
-import { verifyOrder } from '../middlewares/orders.middleware.js';
+import { postOrder } from '../controllers/postOrders.controller.js';
+import { verifyOrder } from '../middlewares/postOrders.middleware.js';
 
 const orderRouter = express.Router();
 

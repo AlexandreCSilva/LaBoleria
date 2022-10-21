@@ -36,7 +36,7 @@ async function verifyOrder (req, res, next) {
     );
 
     if (client.rows.length === 0){
-        return res.sendStatus(STATUS_CODE.CONFLICT);
+        return res.sendStatus(STATUS_CODE.NOT_FOUND);
     }
 
     const cake = await dataBase.query(
@@ -45,7 +45,7 @@ async function verifyOrder (req, res, next) {
     );
 
     if (cake.rows.length === 0){
-        return res.sendStatus(STATUS_CODE.CONFLICT);
+        return res.sendStatus(STATUS_CODE.NOT_FOUND);
     }
 
     next();
