@@ -7,12 +7,13 @@ async function getOrderById (req, res) {
     if(!req.params.id){
         res.sendStatus(STATUS_CODE.BAD_REQUEST);
     } else {
-        json = await dataBase.query(
-            `SELECT json_agg(clients.*) AS client, json_agg(cakes.*) AS cake, orders.id AS "orderId", orders."createdAt", orders."quantity", orders."totalPrice"  FROM orders
+        json = await dataBase.query( 
+            `SELECT json_agg(clients.*) AS client, json_agg(json_build_object('id', cakes.id, 'name', cakes.name, 'price', cakes."price", 'image', cakes."image", 'description', cakes."description", 'flavour', flavours.name)) AS cake, orders.id AS "orderId", orders."createdAt", orders."quantity", orders."totalPrice"  FROM orders
             JOIN cakes ON cakes.id = orders."cakeId"
             JOIN clients ON clients.id = orders."clientId"
-            WHERE orders.id = $1 
-            GROUP BY orders.id, clients.id, cakes.id`,
+            JOIN flavours ON flavours.id = cakes."flavourId"
+            WHERE orders.id = $1
+            GROUP BY orders.id, clients.id, cakes.id, flavours.id`,
             [req.params.id]
         );
     }
