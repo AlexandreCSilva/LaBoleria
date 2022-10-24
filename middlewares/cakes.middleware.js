@@ -16,6 +16,10 @@ const cakeSchema = Joi.object({
     image: Joi.string()
         .uri()
         .required(),
+
+    flavourId: Joi.number()
+        .positive()
+        .required()
 })   
 
 
@@ -39,6 +43,15 @@ async function verifyCake (req, res, next) {
 
     if (cake.rows.length !== 0){
         return res.sendStatus(STATUS_CODE.CONFLICT);
+    }
+
+    const flavour = await dataBase.query(
+        'SELECT * FROM flavours WHERE id = $1',
+        [req.body.flavourId]
+    );
+
+    if (flavour.rows.length === 0){
+        return res.sendStatus(STATUS_CODE.NOT_FOUND);
     }
 
     next();
