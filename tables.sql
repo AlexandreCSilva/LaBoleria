@@ -22,7 +22,8 @@ CREATE TABLE "orders" (
     "cakeId" INTEGER REFERENCES "cakes"("id"),
     quantity INTEGER NOT NULL DEFAULT 1,
     "createdAt" TIMESTAMP DEFAULT NOW(),
-    "totalPrice" NUMERIC NOT NULL DEFAULT 0
+    "totalPrice" NUMERIC NOT NULL DEFAULT 0,
+    "isDelivered" BOOLEAN DEFAULT false
 );
 
 CREATE TABLE "flavours" (

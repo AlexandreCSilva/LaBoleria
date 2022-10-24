@@ -7,6 +7,7 @@ import { getOrderRouter } from './routers/getOrders.router.js';
 import { getOrderByIdRouter } from './routers/getOrdersById.router.js';
 import { getOrderByClientIdRouter } from './routers/getOrdersByClientId.router.js';
 import { flavourRouter } from './routers/flavours.router.js';
+import { patchByIdRouter } from './routers/patchOrdersById.router.js';
 
 const server = express();
 
@@ -19,5 +20,6 @@ server.use(getOrderRouter);
 server.use(getOrderByIdRouter);
 server.use(getOrderByClientIdRouter);
 server.use(flavourRouter);
+server.use(patchByIdRouter)
 
 server.listen(5000, () => console.log('Server On'));

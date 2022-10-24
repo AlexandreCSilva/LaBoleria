@@ -8,7 +8,7 @@ async function getOrderById (req, res) {
         res.sendStatus(STATUS_CODE.BAD_REQUEST);
     } else {
         json = await dataBase.query( 
-            `SELECT json_agg(clients.*) AS client, json_agg(json_build_object('id', cakes.id, 'name', cakes.name, 'price', cakes."price", 'image', cakes."image", 'description', cakes."description", 'flavour', flavours.name)) AS cake, orders.id AS "orderId", orders."createdAt", orders."quantity", orders."totalPrice"  FROM orders
+            `SELECT json_agg(clients.*) AS client, json_agg(json_build_object('id', cakes.id, 'name', cakes.name, 'price', cakes."price", 'image', cakes."image", 'description', cakes."description", 'flavour', flavours.name)) AS cake, orders.id AS "orderId", orders."createdAt", orders."quantity", orders."totalPrice", orders."isDelivered"  FROM orders
             JOIN cakes ON cakes.id = orders."cakeId"
             JOIN clients ON clients.id = orders."clientId"
             JOIN flavours ON flavours.id = cakes."flavourId"
